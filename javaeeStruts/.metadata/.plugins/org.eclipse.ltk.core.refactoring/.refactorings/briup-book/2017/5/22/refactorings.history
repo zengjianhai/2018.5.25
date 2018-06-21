@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Index.java&apos; to &apos;briup-book/src/com.briup.servlet&apos;&#x0D;&#x0A;- Original project: &apos;briup-book&apos;&#x0D;&#x0A;- Destination element: &apos;briup-book/src/com.briup.servlet&apos;&#x0D;&#x0A;- Original element: &apos;com.briup.servlet.Index.java&apos;" description="Copy compilation unit" destination="/src&lt;com.briup.servlet" element1="/src&lt;com.briup.servlet{Index.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1496195390090" units="1" version="1.0"/>
+</session>

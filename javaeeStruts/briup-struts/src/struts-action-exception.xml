@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<package name="struts-action" extends="struts-default">
+		<global-results>
+			<result name="sql">/error.jsp</result>
+			<result name="exception">/error.jsp</result>
+		</global-results>
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+		<global-exception-mappings>
+			<exception-mapping result="sql" exception="java.sql.SQLException"/>
+			<exception-mapping result="exception" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		<action name="login" class="com.briup.struts.LoginAction">
+			<exception-mapping result="error" exception="com.briup.exception.MyException"/>
+			<result name="input">/login.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="regist">/regist.jsp</result>
+		</action>
+	</package>
+</struts>

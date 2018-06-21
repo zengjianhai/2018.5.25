@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans  
+    	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    	http://www.springframework.org/schema/tx   
+   		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    	http://www.springframework.org/schema/aop
+    	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<bean id="dog" class="com.briup.java_bean.factory.Factory"
+		factory-method="getAnnimal">
+		<constructor-arg value="dog" />
+		<property name="name" value="狗" />
+	</bean>
+	<bean id="cat" class="com.briup.java_bean.factory.Factory"
+		factory-method="getAnnimal">
+		<constructor-arg value="cat" />
+		<property name="name" value="猫" />
+	</bean>
+	<!-- id指的是唯一标识，name指的是alias，可以有多个别名 -->
+	<bean id="treeFactory" class="com.briup.java_bean.factory.TreeFactory" />
+	<!-- 实现了BeanPostProcessor,实现回调来更改要更改的属性值 -->
+	<bean class="com.briup.java_bean.factory.MinPro" />
+	<bean id="max" factory-bean="treeFactory" factory-method="getTree" scope="prototype">
+		<constructor-arg value="maxTree" />
+		<property name="treeName" value="银杉"></property>
+	</bean>
+	<bean id="min" factory-bean="treeFactory" factory-method="getTree"
+		init-method="init" destroy-method="destory">
+		<constructor-arg value="minTree" />
+		<property name="treeName" value="樟树"></property>
+	</bean>
+	<bean id="singandpro" class="com.briup.java_bean.factory.SingleAndPrototype" >
+		<lookup-method name="getMaxTree" bean="max"/>
+	</bean>
+	<bean id="test" class="com.briup.resource.TestBean"/>
+</beans>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans  
+    	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    	http://www.springframework.org/schema/tx   
+   		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    	http://www.springframework.org/schema/aop
+    	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<bean id="person" class="com.briup.highbean.Person">
+		<property name="age" value="20" />
+		<property name="son">
+			<bean class="com.briup.highbean.Son">
+				<property name="name" value="min" />
+			</bean>
+		</property>
+	</bean>
+	<!--如下将会将person的属性son的属性age传入son1实例的age属性 -->
+	<bean id="son1" class="com.briup.highbean.Son">
+		<property name="name">
+			<bean id="person.son.name"
+				class="org.springframework.beans.factory.config.PropertyPathFactoryBean" />
+		</property>
+	</bean>
+	<!-- 以下将会获得结果son,它将是person bean的son的数值 -->
+	<bean id="son2"
+		class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<property name="targetBeanName">
+			<value>person</value>
+		</property>
+		<property name="propertyPath">
+			<value>son</value>
+		</property>
+	</bean>
+	<!-- 以下将会获得结果16,它将是person bean的son的age属性 -->
+	<bean id="son3"
+		class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<property name="targetBeanName">
+			<value>person</value>
+		</property>
+		<property name="propertyPath">
+			<value>son.name</value>
+		</property>
+	</bean>
+
+	<!-- 以下会获得结果为30 ,它将是获得该bean的内部bean的age属性 -->
+	<bean id="son4"
+		class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<property name="targetObject">
+			<bean class="com.briup.highbean.Person">
+				<property name="age">
+					<value>30</value>
+				</property>
+			</bean>
+		</property>
+		<property name="propertyPath">
+			<value>age</value>
+		</property>
+	</bean>
+	<bean id="valueson" class="com.briup.highbean.ValueSon" />
+	<bean id="son5" class="com.briup.highbean.Son">
+		<property name="name">
+			<bean
+				class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+				<property name="targetObject" ref="valueson"/>
+				<property name="targetMethod" value="getValue"/>
+			</bean>
+		</property>
+	</bean>
+</beans>

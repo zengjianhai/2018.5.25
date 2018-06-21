@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+   "-//Apache Struts//XWork Validator 1.0.3//EN"
+   "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="userName">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message key="user.required"/>
+		</field-validator>
+	</field>
+	<field name="passWord">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message key="pass.required"/>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regexExpression"><![CDATA[(\w{6,15})]]></param>
+			<message key="pass.regex"/>
+		</field-validator>
+	</field>
+	<field name="rePassWord">
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[(rePassWord==passWord)]]></param>
+			<message key="repass.fieldexpression"/>
+		</field-validator>
+	</field>
+</validators>

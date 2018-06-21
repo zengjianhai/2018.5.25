@@ -1,0 +1,34 @@
+1499169335105	Move compilation unit
+1499169339240	Delete element
+1499169512331	Rename type 'Test'
+1499170319477	Delete element
+1499170556683	Delete element
+1499173627362	Copy file
+1499174025742	Rename resource 'index.jsp'
+1499174725513	Copy file
+1499174732576	Rename resource 'mian.jsp'
+1499175048523	Rename resource 'servlet.xml'
+1499176820578	Move 'springMVC-servlet.xml' to 'WEB-INF'
+1499220750133	Encapsulate field 'user'
+1499228199508	Delete elements
+1499238429832	Encapsulate field 'name'
+1499238717327	Rename type 'B'
+1499238978146	Delete element
+1499242440102	Move compilation units
+1499242487916	Move compilation unit
+1499242525996	Copy file
+1499244249701	Rename resource 'StudentMapper.xml'
+1499249054418	Delete element
+1499249657419	Delete element
+1499250343970	Move file
+1499251054821	Move compilation unit
+1499305493435	Copy folder
+1499305529185	Copy files
+1499305696567	Copy file
+1499305724804	Copy folder
+1499305758184	Copy folder
+1499306016973	Copy package
+1499306026082	Copy package
+1499306035837	Copy package
+1499306041643	Copy package
+1499306046444	Copy package

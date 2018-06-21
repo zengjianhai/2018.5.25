@@ -1,0 +1,12 @@
+<classpath>
+  <container id="login!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="F:/eclipseWorkSpace/javaeeStruts/login/WebContent/WEB-INF/lib/spring-webmvc-4.0.1.RELEASE.jar">
+      <source-attachment-path>F:/常用/java jar包/jar/spring-framework-3.2.0.RC2/libs/spring-webmvc-3.2.0.RC2-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+  <container id="springMVC!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="F:/eclipseWorkSpace/javaeeStruts/springMVC/WebContent/WEB-INF/lib/spring-webmvc-4.0.1.RELEASE.jar">
+      <source-attachment-path>F:/常用/java jar包/jar/spring-framework-3.2.0.RC2/libs/spring-webmvc-3.2.0.RC2-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

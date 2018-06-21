@@ -1,0 +1,20 @@
+function test(){
+	//1.发post的ajax的请求
+	var ajax = new XMLHttpRequest();
+	//2.准备请求
+	ajax.open("get","/login",true);
+	//3.响应
+	ajax.onreadystatechange = function() {
+		if (x.readyState == 4) {
+			var status = x.status;
+			if (status >= 200 && status < 300) {
+				alert("this success");
+			} else {
+			}
+		}
+	};
+	ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	//4.发送请求
+	ajax.send("flag=post");
+	console.log("");
+}

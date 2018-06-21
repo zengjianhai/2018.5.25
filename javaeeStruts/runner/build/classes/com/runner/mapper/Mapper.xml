@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.runner.dao.IMemberDao">
+	<resultMap type="com.runner.common.bean.Memberinfo" id="Memberinfo">
+		<id property="id" column="id" />
+		<result property="nickName" column="nickname" />
+		<result property="passwd" column="password" />
+		<result property="gender" column="gender" />
+		<result property="age" column="age" />
+		<result property="email" column="email" />
+		<result property="provinceCity" column="provincecity" />
+		<result property="address" column="address" />
+		<result property="phone" column="phone" />
+		<result property="passwdQuestion" column="passwordquestion" />
+		<result property="passwdAnswer" column="passwordanswer" />
+		<result property="recommender" column="recommender" />
+		<result property="point" column="point" />
+		<result property="registerdate" column="registerdate" />
+	</resultMap>
+	<select id="findMemberinfoByName" resultMap="Memberinfo">
+		SELECT * FROM
+		memberInfo WHERE nickname=#{nickName}
+	</select>
+	<insert id="saveOrUpdateMemberinfo" parameterType="com.runner.common.bean.Memberinfo">
+	<!-- 设置了id自增 -->
+		<selectKey keyProperty="id" resultType="java.lang.Long" order="BEFORE">
+			SELECT SEQ_COMMON.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO
+		memberInfo(id,nickname,password,gender,age,email)
+		VALUES(#{id},#{nickName},#{passwd},#{gender},#{age},#{email})
+	</insert>
+</mapper> 

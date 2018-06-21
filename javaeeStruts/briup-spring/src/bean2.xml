@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans  
+    	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    	http://www.springframework.org/schema/aop
+    	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    	http://www.springframework.org/schema/util
+    	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<!-- <bean id="coll" abstract="true" class="com.briup.bean.Coll">
+		<property name="schools" >
+			<list>
+				<value>小学</value>
+				<value>初中</value>
+				<value>高中</value>
+			</list>
+		</property>
+		<property name="books" >
+			<list>
+				<value>疯狂java</value>
+				<value>时间简史</value>
+				<value>head first</value>
+			</list>
+		</property>
+		<property name="scores" >
+			<map>
+				<entry key="数学" value="97"/>
+				<entry key="语文" value="87"/>
+				<entry key="英语" value="76"/>
+			</map>
+		</property>
+		<property name="maps" >
+			<map>
+				<entry key="数学" value="97"/>
+				<entry key="语文" value="87"/>
+				<entry key="英语" value="76"/>
+			</map>
+		</property>
+		<property name="healths" >
+			<props>
+				<prop key="血压">正常</prop>
+				<prop key="身高">178cm</prop>
+			</props>
+		</property>
+	</bean> -->
+	<bean class="com.briup.bean.SpELBeanFactoryPostProcessor"/>
+	<bean id="collTo" parent="coll">
+		<property name="healths" >
+			<props merge="true">
+				<prop key="血压">#{db['jdbc.passwd']}</prop>
+				<prop key="身高">178cm</prop>
+				<prop key="体重">65kg</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="coll" abstract="true" class="com.briup.bean.Coll"
+		p:schools-ref="schools"
+		p:scores-ref="scores"
+		p:maps-ref="maps">
+		<property name="books" >
+			<list>
+				<value>疯狂java</value>
+				<value>时间简史</value>
+				<value>%{db.name}</value>
+			</list>
+		</property>
+		<property name="healths" >
+			<props>
+				<prop key="血压">正常</prop>
+				<prop key="身高">178cm</prop>
+			</props>
+		</property>
+	</bean>
+	<util:list id="schools">
+		<value>小学</value>
+		<value>初中</value>
+		<value>高中</value>
+	</util:list>
+	<util:map id="scores">  
+        <entry key="数学" value="97"/>
+		<entry key="语文" value="87"/>
+		<entry key="英语" value="76"/> 
+    </util:map>  
+    <util:map id="maps">  
+        <entry key="数学" value="97"/>
+		<entry key="语文" value="87"/>
+		<entry key="英语" value="76"/> 
+    </util:map> 
+    <util:properties id="db" location="classpath:db.properties"></util:properties>
+</beans>

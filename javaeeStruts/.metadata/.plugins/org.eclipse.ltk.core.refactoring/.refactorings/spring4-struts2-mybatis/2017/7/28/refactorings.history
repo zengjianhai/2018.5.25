@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;message.properties&apos; to &apos;AI/src/com.mymin.sort&apos;&#x0D;&#x0A;- Original project: &apos;spring4-struts2-mybatis&apos;&#x0D;&#x0A;- Destination element: &apos;AI/src/com.mymin.sort&apos;&#x0D;&#x0A;- Original element: &apos;message.properties&apos;" description="Copy file" destination="=AI/src&lt;com.mymin.sort" element1="src/message.properties" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1499653274989" units="0" version="1.0"/>
+</session>

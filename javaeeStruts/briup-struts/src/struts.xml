@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<!-- 也可以子在web.xml中配置struts2的常量 -->
+	<!-- <constant name="struts.custom.i18n.resources" value="message"></constant> -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<!-- 当action，package，interceptors过多时，都放到struts.xml中不好维护，就可以写在include中 实际上在include中的也是单独解析xml文件，所以用include引用的xml也要是完整的struts2配置 -->
+	<include file="struts-ajax.xml"></include> 
+	<!-- <constant name="struts.configuration.xml.reload" value="true" />  
+	<constant name="struts.convention.classes.reload" value="true" />  
+	<constant name="struts.convention.result.path" value="/WEB-INF/page"/> 
+	<constant name="struts.convention.action.disableJarScanning" value="true" />
+	<constant name="struts.convention.action.fileProtocols" value="jar,wsjar" />
+	<constant name="struts.convention.action.includeJars" value=".*?/struts2-action*.*?jar(!/)?" />
+	<constant name="struts.convention.action.packages" value="com.briup.struts" /> -->
+</struts>
