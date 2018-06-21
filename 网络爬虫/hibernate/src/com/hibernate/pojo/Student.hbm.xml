@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 持久化的实体类，table表名，数据库中没有会进行创建 -->
+	<class name="com.hibernate.pojo.Student" table="t_students">
+		<!-- usage指定当期返回策略，region指明二级缓存名称 -->
+		<cache usage="read-only" region="com.hibernate.pojo.Student"></cache>
+		
+		<!-- 主键的映射 -->
+		<id name="id" column="sno">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="sname"></property>
+		<property name="age" column="sage"></property>
+	</class>
+	
+	<!-- 命名查询 -->
+	<query name="allHql">
+		<!-- ![CDATA告诉我们，在这里xml不会对里面的数据进行解析，同其他程序解析 -->
+		<![CDATA[select name from Student]]>
+	</query>
+</hibernate-mapping>

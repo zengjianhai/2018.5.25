@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.hibernate.pojo.one2many.Customer" table="t_customer">
+		<id name="id" type="long" column="cno">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name" type="string">
+			<column name="cname" length="15" />
+		</property>
+		<set name="orders" cascade="save-update" inverse="true" lazy="true">
+			<key column="customer_id" />
+			<one-to-many class="com.hibernate.pojo.one2many.Order"/>
+		</set>
+	</class>
+</hibernate-mapping>
